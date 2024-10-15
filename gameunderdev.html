@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exciting Game Launch!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        #countdown {
+            font-size: 2.5rem;
+            color: #888f8c;
+        }
+
+        #game-logo {
+            width: 300px;
+            height: 300px;
+            background-color: #f8f8f8;
+            border: 5px solid #000000;
+            border-radius: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #game-logo img {
+            width: 130px;
+            margin-top: -238px;
+            margin-left: -149px;
+            position: fixed;
+        }
+
+        #game-logo #mountains {
+            width: 130px;
+            margin-top: 90px;
+            margin-left: 0px;
+            width: 190px;
+            position: fixed;
+        }
+
+        #game-logo strong {
+            position: absolute;
+            bottom: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.8rem;
+            top: 0;
+            margin-top: 90px;
+    
+                /* Animated gradient */
+            background: linear-gradient(90deg, #ff4081, #42a5f5, #ffeb3b, #00e676);
+            background-size: 400% 400%; /* Enlarged background for smoother transitions */
+            animation: gradientShift 6s ease infinite; /* Animate the gradient over 6 seconds */
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+                /* Define the gradient animation */
+            @keyframes gradientShift {
+            0% {
+                    background-position: 0% 50%;
+            }
+            50% {
+                    background-position: 100% 50%;
+            }
+            100% {
+                    background-position: 0% 50%;
+            }
+}
+
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #020202;
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Something Awesome is Coming!</h1>
+    <hr>
+    <div id="game-logo">
+        <img src="/geography-logo.png" alt="logo">
+        <strong>Physical Features</strong>
+        <img id="mountains" src="/mountains.png" alt="">
+    </div>
+    <p>The game is under development and will be finished by:</p>
+    <div id="countdown"></div>
+    <hr>
+
+    <script>
+        // Set the target launch date
+        const launchDate = new Date('October 21, 2024 00:00:00').getTime();
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById('countdown').innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "The game is here!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
